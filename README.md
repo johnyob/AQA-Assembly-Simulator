@@ -79,7 +79,7 @@ Virtual Machine Config
 
 To execute AQA assembly programs on the virtual machine, the command ``aqa-assembly-simulator execute <file> [--trace]`` must be used, where `<file>` is the absolute file path for the file containing the AQA assembly instructions and `[--trace]` is an optional argument that indicates whether the program counter, register contents, comparison register contents and memory contents are printed after each instruction is executed.
 
-Contents of asm:
+Contents of `asm`:
 ```asm
 LDR r1, 0
 CMP r1, #0
