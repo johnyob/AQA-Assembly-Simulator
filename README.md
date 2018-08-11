@@ -20,7 +20,7 @@ python -m pip install --no-cache-dir --index-url https//test.pypi.org/simple/ aq
 
 ## Usage
 
-###Help
+### Help
 ```sh
 C:\>aqa-assembly-simulator -help
 AQA Assembly Simulator
@@ -39,7 +39,7 @@ Help:
   For help, please see https://github.com/johnyob/AQA-Assembly-Simulator
 ```
 
-###Config Setup
+### Config Setup
 
 To setup the virtual machine config the command ``aqa-assembly-simulator config setup`` must be used. It should be noted that if the virtual machine config has not been setup using ``config setup`` and a different command is used then a ``AssemblySimulatorVMConfigException`` is raised.
 
@@ -58,7 +58,7 @@ Virtual Machine Config
 
 ```
 
-###Config Show
+### Config Show
 
 To display the virtual machine config the command ``aqa-assembly-simulator config show`` must be used.
 
@@ -75,7 +75,7 @@ Virtual Machine Config
 
 ```
 
-###Execute
+### Execute
 
 To execute AQA assembly programs on the virtual machine, the command ``aqa-assembly-simulator execute <file> [--trace]`` must be used, where `<file>` is the absolute file path for the file containing the AQA assembly instructions and `[--trace]` is an optional argument that indicates whether the program counter, register contents, comparison register contents and memory contents are printed after each instruction is executed.
 
