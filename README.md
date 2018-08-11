@@ -55,7 +55,7 @@ Virtual Machine Config
  | registers       | 6     |
  | memory capacity | 48    |
  +-----------------+-------+
- 
+
 ```
 
 ###Config Show
@@ -72,7 +72,7 @@ Virtual Machine Config
  | registers       | 6     |
  | memory capacity | 48    |
  +-----------------+-------+
- 
+
 ```
 
 ###Execute
@@ -91,7 +91,7 @@ then:
 endif:
   HALT
 ```
-  
+
 ```sh
 C:/>aqa-assembly-simulator execute asm
 
@@ -193,8 +193,8 @@ Note: *10* is stored in memory address *0* initially.
 - *#* - Use the decimal value (integer) specified after the *#*, e.g. **#25** means use the decimal value **25**.
 - *rd* - Use the value stored in register **d**, e.g. **r4** means use the value stored in register **4**.
 
-##Errors
+## Errors
 If you discover an error within this package, please email [me](mailto:alistair.o'brien@ellesmere.com).
 
-##Credits
+## Credits
 - [Alistair O'Brien](https://github.com/johnyob)
