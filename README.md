@@ -15,7 +15,7 @@ This is an easy-to-use Python virtual machine for the AQA assembly instruction s
 To install *AQA Assembly Simulator* use:
 
 ```sh
-python -m pip install --no-cache-dir --index-url https//test.pypi.org/simple/ aqa-assembly-simulator
+python -m pip install --no-cache-dir --index-url https://test.pypi.org/simple/ aqa-assembly-simulator
 ```
 
 ## Usage
