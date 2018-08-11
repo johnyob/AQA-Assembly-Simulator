@@ -9,6 +9,3 @@ def main():
     """
 
     Client()
-
-
-main()
