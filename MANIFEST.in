@@ -1,1 +1,2 @@
 include aqa_assembly_simulator/commands.json
+include aqa_assembly_simulator/parser/syntax.json
