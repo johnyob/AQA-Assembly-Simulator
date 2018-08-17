@@ -29,7 +29,7 @@ class Memory:
         """
 
         if not 0 <= address.get_literal() < self._capacity:
-            raise VirtualMachineError(address, "Address index out of range.")
+            raise VirtualMachineError(address, "Address index out of range")
 
         return self._memory[address.get_literal()]
 
@@ -44,7 +44,7 @@ class Memory:
         """
 
         if not 0 <= address.get_literal() < self._capacity:
-            raise VirtualMachineError(address, "Address index out of range.")
+            raise VirtualMachineError(address, "Address index out of range")
 
         self._memory[address.get_literal()] = int(value)
 
