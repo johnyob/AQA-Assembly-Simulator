@@ -51,9 +51,18 @@ class Token:
 
         return self._line
 
+    def __str__(self):
+        """
+        Returns user friendly string representation of the token object
+
+        :return: (string)
+        """
+
+        return self._lexeme
+
     def __repr__(self):
         """
-        Returns the string representation of the token object
+        Returns the string representation of the token object (Debug)
 
         :return: (string)
         """
