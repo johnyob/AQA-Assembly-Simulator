@@ -1,5 +1,6 @@
 import re as regular_expression
 import json
+import sys
 
 from ascii_table import Table
 
@@ -21,20 +22,22 @@ class Setup(Command):
         registers = input("Enter number of registers in the virtual machine: ")
 
         if not regular_expression.match(REGISTERS_REGEX, registers):
-            raise AssemblySimulatorVMConfigException({
+            print(AssemblySimulatorVMConfigException({
                 "message": "invalid number of registers",
                 "format": "[0-9]{1,2}",
                 "registers": registers
-            })
+            }), file=sys.stderr)
+            return
 
         memory_capacity = input("Enter number of addressable memory units in the virtual machine: ")
 
         if not regular_expression.match(MEMORY_CAPACITY_REGEX, memory_capacity):
-            raise AssemblySimulatorVMConfigException({
+            print(AssemblySimulatorVMConfigException({
                 "message": "invalid number of addressable memory units",
                 "format": "[0-9]{1,3}",
                 "memory capacity": memory_capacity
-            })
+            }), file=sys.stderr)
+            return
 
         config = {
             "memory capacity": int(memory_capacity),
