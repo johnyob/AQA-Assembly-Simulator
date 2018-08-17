@@ -20,6 +20,8 @@ class LexerError(Exception):
         :return: (string)
         """
 
-        return "(Line: {0}, Message: {1}, Character: {2})".format(self._line, self._message, self._character)
+        return "[ERROR] Error: AssemblySimulatorLexerError, Response: (Line: {0}, Message: {1}, Character: {2})".format(
+            self._line, self._message, self._character
+        )
 
     __repr__ = report
