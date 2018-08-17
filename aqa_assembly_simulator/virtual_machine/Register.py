@@ -28,7 +28,7 @@ class Register:
         """
 
         if not 1 <= register.get_literal() <= self._registers:
-            raise VirtualMachineError(register, "Register index out of range.")
+            raise VirtualMachineError(register, "Register index out of range")
 
         return self._register[register.get_literal()]
 
@@ -43,7 +43,7 @@ class Register:
         """
 
         if not 1 <= register.get_literal() <= self._registers:
-            raise VirtualMachineError(register, "Register index out of range.")
+            raise VirtualMachineError(register, "Register index out of range")
 
         self._register[register.get_literal()] = int(value)
 
