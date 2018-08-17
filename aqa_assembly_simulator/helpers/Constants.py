@@ -10,3 +10,4 @@ VM_CONFIG = os.path.join(ROOT, "virtual_machine{0}config{0}config.json".format(s
 
 REGISTERS_REGEX = r"^(\d{1,2})$"
 MEMORY_CAPACITY_REGEX = r"^(\d{1,3})$"
+INTEGER_REGEX = r"^(-?\d+)$"
