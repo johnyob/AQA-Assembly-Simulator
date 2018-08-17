@@ -25,18 +25,23 @@ class Execute(Command):
             sys.exit(70)
 
     def _run(self, source):
+
         lexer_errors, parser_errors, virtual_machine_errors = [], [], []
 
         lexer = Lexer(source)
         tokens = lexer.scan_tokens()
 
+        lexer_errors = lexer.get_errors()
+        self._print_errors(lexer_errors)
+        if lexer_errors:
+            return lexer_errors + parser_errors, virtual_machine_errors
+
         parser = Parser(tokens)
         statements = parser.parse()
 
-        lexer_errors, parser_errors = lexer.get_errors(), parser.get_errors()
-        self._print_errors(lexer_errors + parser_errors)
-
-        if len(lexer_errors + parser_errors) > 0:
+        parser_errors = parser.get_errors()
+        self._print_errors(parser_errors)
+        if parser_errors:
             return lexer_errors + parser_errors, virtual_machine_errors
 
         virtual_machine = VirtualMachine(
@@ -53,8 +58,7 @@ class Execute(Command):
 
     def _print_errors(self, errors):
         for error in errors:
-            print(error)
             if hasattr(error, "report"):
-                print(error.report())
+                print(error.report(), file=sys.stderr)
             else:
-                print("Python error: {0}".format(error))
+                print("[ERROR] Error: AssemblySimulatorPythonError, Response: {0}".format(error), file=sys.stderr)
