@@ -13,7 +13,7 @@ def read_file(file_location):
         with open(file_location, "r") as file:
             return file.read()
     except FileNotFoundError:
-        print("Failed to read {0}", file=sys.stderr)
+        print("[ERROR] Error: FileNotFoundError, Response: Failed to read {0}".format(file_location), file=sys.stderr)
         return ""
 
 
