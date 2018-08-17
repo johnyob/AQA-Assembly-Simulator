@@ -80,7 +80,7 @@ class StatementVisitor(Abstract):
         pass
 
     @abstractmethod
-    def visit_label_statement(self, statements):
+    def visit_label_statement(self, statement):
         pass
 
 
@@ -142,7 +142,7 @@ class Load(Statement):
         :return: (string)
         """
 
-        return "LDR(Register: {0}, Direct Address: {1})".format(self._register, self._direct_address)
+        return "LDR {0}, {1}".format(self._register, self._direct_address)
 
 
 class Store(Statement):
@@ -192,7 +192,7 @@ class Store(Statement):
         :return: (string)
         """
 
-        return "STR(Register: {0}, Direct Address: {1})".format(self._register, self._direct_address)
+        return "STR {0}, {1}".format(self._register, self._direct_address)
 
 
 class Add(Statement):
@@ -251,7 +251,7 @@ class Add(Statement):
         :return: (string)
         """
 
-        return "ADD(Register_d: {0}, Register_n: {1}, Operand: {2})".format(
+        return "ADD {0}, {1}, {2}".format(
             self._register_d, self._register_n, self._operand
         )
 
@@ -312,7 +312,7 @@ class Subtract(Statement):
         :return: (string)
         """
 
-        return "SUB(Register_d: {0}, Register_n: {1}, Operand: {2})".format(
+        return "SUB {0}, {1}, {2}".format(
             self._register_d, self._register_n, self._operand
         )
 
@@ -364,7 +364,7 @@ class Move(Statement):
         :return: (string)
         """
 
-        return "MOV(Register_d: {0}, Operand: {1})".format(self._register_d, self._operand)
+        return "MOV {0}, {1}".format(self._register_d, self._operand)
 
 
 class Compare(Statement):
@@ -414,7 +414,7 @@ class Compare(Statement):
         :return: (string)
         """
 
-        return "CMP(Register_d: {0}, Operand: {1})".format(self._register_d, self._operand)
+        return "CMP {0}, {1}".format(self._register_d, self._operand)
 
 
 class Branch(Statement):
@@ -455,7 +455,7 @@ class Branch(Statement):
         :return: (string)
         """
 
-        return "B(Label: {0})".format(self._label)
+        return "B {0}".format(self._label)
 
 
 class BranchEqual(Statement):
@@ -496,7 +496,7 @@ class BranchEqual(Statement):
         :return: (string)
         """
 
-        return "BEQ(Label: {0})".format(self._label)
+        return "BEQ {0}".format(self._label)
 
 
 class BranchNotEqual(Statement):
@@ -537,7 +537,7 @@ class BranchNotEqual(Statement):
         :return: (string)
         """
 
-        return "BNE(Label: {0})".format(self._label)
+        return "BNE {0}".format(self._label)
 
 
 class BranchGreaterThan(Statement):
@@ -578,7 +578,7 @@ class BranchGreaterThan(Statement):
         :return: (string)
         """
 
-        return "BGT(Label: {0})".format(self._label)
+        return "BGT {0}".format(self._label)
 
 
 class BranchLessThan(Statement):
@@ -619,7 +619,7 @@ class BranchLessThan(Statement):
         :return: (string)
         """
 
-        return "BLT(Label: {0})".format(self._label)
+        return "BLT {0}".format(self._label)
 
 
 class And(Statement):
@@ -678,7 +678,7 @@ class And(Statement):
         :return: (string)
         """
 
-        return "AND(Register_d: {0}, Register_n: {1}, Operand: {2})".format(
+        return "AND {0}, {1}, {2}".format(
             self._register_d, self._register_n, self._operand
         )
 
@@ -739,7 +739,7 @@ class Or(Statement):
         :return: (string)
         """
 
-        return "ORR(Register_d: {0}, Register_n: {1}, Operand: {2})".format(
+        return "ORR {0}, {1}, {2}".format(
             self._register_d, self._register_n, self._operand
         )
 
@@ -800,7 +800,7 @@ class Eor(Statement):
         :return: (string)
         """
 
-        return "EOR(Register_d: {0}, Register_n: {1}, Operand: {2})".format(
+        return "EOR {0}, {1}, {2}".format(
             self._register_d, self._register_n, self._operand
         )
 
@@ -852,7 +852,7 @@ class Not(Statement):
         :return: (string)
         """
 
-        return "MVN(Register_d: {0}, Operand: {1})".format(
+        return "MVN {0}, {1}".format(
             self._register_d, self._operand
         )
 
@@ -913,7 +913,7 @@ class LeftShift(Statement):
         :return: (string)
         """
 
-        return "LSL(Register_d: {0}, Register_n: {1}, Operand: {2})".format(
+        return "LSL {0}, {1}, {2}".format(
             self._register_d, self._register_n, self._operand
         )
 
@@ -974,7 +974,7 @@ class RightShift(Statement):
         :return: (string)
         """
 
-        return "LSR(Register_d: {0}, Register_n: {1}, Operand: {2})".format(
+        return "LSR {0}, {1}, {2}".format(
             self._register_d, self._register_n, self._operand
         )
 
@@ -1013,16 +1013,14 @@ class Halt(Statement):
 
 class Label(Statement):
 
-    def __init__(self, identifier, body):
+    def __init__(self, identifier):
         """
         Label statement constructor
 
-        :param identifier: label identifier (string)
-        :param body: list of statements in label's body (list)
+        :param identifier: label identifier (aqa_assembly_simulator.lexer.TokenType.TokenType)
         """
 
         self._identifier = identifier
-        self._body = body
 
     def get_identifier(self):
         """
@@ -1033,14 +1031,6 @@ class Label(Statement):
 
         return self._identifier
 
-    def get_body(self):
-        """
-        Returns the list of statements in the label's body
-
-        :return: (list)
-        """
-
-        return self._body
 
     def accept(self, visitor):
         """
@@ -1060,4 +1050,4 @@ class Label(Statement):
         :return: (string)
         """
 
-        return "LABEL(Identifier: {0}, Body: {1})".format(self._identifier, self._body)
+        return "{0}:".format(self._identifier)
