@@ -1,4 +1,7 @@
+import re as regular_expression
+
 from aqa_assembly_simulator.lexer.TokenType import TokenType, KEYWORDS
+from aqa_assembly_simulator.helpers.Constants import INTEGER_REGEX
 from aqa_assembly_simulator.error.LexerError import LexerError
 from aqa_assembly_simulator.lexer.Token import Token
 
@@ -19,6 +22,9 @@ class Lexer:
         self._start = 0
         self._current = 0
         self._line = 1
+
+        if not self._source:
+            self._error("File is empty", self._peek())
 
     def scan_tokens(self):
         """
@@ -90,6 +96,20 @@ class Lexer:
         else:
             self._error("Unexpected character", character)
 
+    def _validate_integer(self, literal_string):
+        """
+        Method used to validate integer
+
+        :param literal_string: (string)
+        :return: (boolean)
+        """
+
+        if not regular_expression.match(INTEGER_REGEX, literal_string):
+            self._error("Invalid integer format", self._peek())
+            return False
+
+        return True
+
     def _register(self):
         """
         Method used to handle the creation of a register token.
@@ -102,8 +122,11 @@ class Lexer:
         while not self._is_at_end() and self._is_digit(self._peek()):
             self._move()
 
-        literal = int(self._source[self._start + 1 : self._current])
-        self._add_token_literal(TokenType.REGISTER, literal)
+        literal_string = self._source[self._start + 1 : self._current]
+        if not self._validate_integer(literal_string):
+            return
+
+        self._add_token_literal(TokenType.REGISTER, int(literal_string))
 
     def _immediate_address(self):
         """
@@ -119,8 +142,11 @@ class Lexer:
         while not self._is_at_end() and self._is_digit(self._peek()):
             self._move()
 
-        literal = int(self._source[self._start + 1 : self._current])
-        self._add_token_literal(TokenType.IMMEDIATE_ADDRESS, literal)
+        literal_string = self._source[self._start + 1: self._current]
+        if not self._validate_integer(literal_string):
+            return
+
+        self._add_token_literal(TokenType.IMMEDIATE_ADDRESS, int(literal_string))
 
     def _direct_address(self):
         """
@@ -136,8 +162,11 @@ class Lexer:
         while not self._is_at_end() and self._is_digit(self._peek()):
             self._move()
 
-        literal = int(self._source[self._start : self._current])
-        self._add_token_literal(TokenType.DIRECT_ADDRESS, literal)
+        literal_string = self._source[self._start  : self._current]
+        if not self._validate_integer(literal_string):
+            return
+
+        self._add_token_literal(TokenType.DIRECT_ADDRESS, int(literal_string))
 
     def _identifier(self):
         """
