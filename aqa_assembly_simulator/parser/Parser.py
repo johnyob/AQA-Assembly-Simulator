@@ -71,27 +71,22 @@ class Parser:
                 return self._label_declaration()
 
             return self._statement()
-        except ParseError as error:
-
+        except ParseError:
             self._synchronise()
             return None
 
     def _label_declaration(self):
         """
         Parses label declaration.
-        Appends statements to body until either next label or end of tokens.
         If invalid syntax then raises parser error.
 
         :return: (aqa_assembly_simulator.parser.Statement.Label)
         """
 
-        identifier, body = self._previous(), []
+        identifier = self._previous()
+        self._consume(TokenType.COLON, "Expect colon after label identifier")
 
-        self._consume(TokenType.COLON, "Expect colon after label identifier.")
-        while not self._check(TokenType.IDENTIFIER) and not self._is_at_end():
-            body.append(self._statement())
-
-        return Label(identifier, body)
+        return Label(identifier)
 
     def _statement(self):
         """
@@ -106,7 +101,7 @@ class Parser:
             if self._match(TokenType(type)):
                 return self._instruction(type)
 
-        raise self._error(self._peek(), "unexpected token.")
+        raise self._error(self._peek(), "Unexpected token")
 
     def _instruction(self, type):
         """
