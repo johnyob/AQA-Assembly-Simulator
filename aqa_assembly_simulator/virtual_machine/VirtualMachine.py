@@ -36,6 +36,7 @@ class VirtualMachine(StatementVisitor):
         self._comparison_register = ComparisonRegister()
 
         self._program_counter = 0
+        self._branched = False
         self._halted = False
 
         self._errors = []
@@ -144,7 +145,11 @@ class VirtualMachine(StatementVisitor):
         :return: (None)
         """
 
+        if statement.get_label().get_lexeme() not in self._labels:
+            raise VirtualMachineError(statement.get_label(), "Invalid label identifier")
+
         self._program_counter = self._labels[statement.get_label().get_lexeme()]
+        self._branched = True
 
     def visit_branch_equal_statement(self, statement):
         """
@@ -156,7 +161,7 @@ class VirtualMachine(StatementVisitor):
         """
 
         if self._comparison_register["EQ"]:
-            self._program_counter = self._labels[statement.get_label().get_lexeme()]
+            self.visit_branch_statement(statement)
 
     def visit_branch_not_equal_statement(self, statement):
         """
@@ -168,7 +173,7 @@ class VirtualMachine(StatementVisitor):
         """
 
         if self._comparison_register["NE"]:
-            self._program_counter = self._labels[statement.get_label().get_lexeme()]
+            self.visit_branch_statement(statement)
 
     def visit_branch_greater_than_statement(self, statement):
         """
@@ -180,7 +185,7 @@ class VirtualMachine(StatementVisitor):
         """
 
         if self._comparison_register["GT"]:
-            self._program_counter = self._labels[statement.get_label().get_lexeme()]
+            self.visit_branch_statement(statement)
 
     def visit_branch_less_than_statement(self, statement):
         """
@@ -192,7 +197,7 @@ class VirtualMachine(StatementVisitor):
         """
 
         if self._comparison_register["LT"]:
-            self._program_counter = self._labels[statement.get_label().get_lexeme()]
+            self.visit_branch_statement(statement)
 
     def visit_and_statement(self, statement):
         """
@@ -293,8 +298,6 @@ class VirtualMachine(StatementVisitor):
     def visit_label_statement(self, statement):
         """
         Handles Label Statement.
-        Executes statements within the body of the label statement.
-        If tracing is enabled then will print trace of virtual machine.
 
         :param statement: (aqa_assembly_simulator.parser.Statement.Label)
         :return: (None)
@@ -302,11 +305,6 @@ class VirtualMachine(StatementVisitor):
         if self._trace:
             print("\nEntering {0} Label".format(statement.get_identifier().get_lexeme()))
 
-        statements = statement.get_body()
-        for program_counter in range(len(statements)):
-            self._execute_statement(statements[program_counter])
-            if not self._halted:
-                self._print_trace(self._program_counter + program_counter)
 
     def execute(self):
         """
@@ -319,34 +317,49 @@ class VirtualMachine(StatementVisitor):
         """
 
         try:
-            self._print_trace(self._program_counter)
             while not self._halted and self._program_counter < len(self._statements):
-                self._execute_statement(self._statements[self._program_counter])
+                CIR = self._statements[self._program_counter]
+                self._execute_statement(CIR)
+                self._print_trace(CIR)
+
                 self._program_counter += 1
-                if not self._halted:
-                    self._print_trace(self._program_counter)
-            self._print_trace(self._program_counter, True)
+                self._branched = False
+
+            print("\nResults of program being executed:")
+            self._print_registers()
+
         except (VirtualMachineError, Exception) as error:
             self._error(error)
             self._halted = True
 
-    def _print_trace(self, program_counter, trace=False):
+    def _print_trace(self, CIR):
         """
-        Prints program counter, registers and memory if tracing is enabled.
+        Prints program counter, registers and memory contents if tracing is enabled.
 
-        :param program_counter: (integer)
+        :param CIR: Current statement has just been executed (aqa_assembly_simulator.parser.Statement.Statement)
         :return: (None)
         """
 
-        if self._trace or trace:
-            print("\nProgram Counter: {0}".format(program_counter))
+        if self._trace:
+            print("\nCurrent Instruction Register: {0}".format(CIR))
 
-            print("\nRegister")
-            print(self._register)
-            print("\nComparison Register")
-            print(self._comparison_register)
-            print("\nMemory")
-            print(self._memory)
+            print("\nResult of CIR being executed:")
+            print("\nProgram Counter: {0}".format(self._program_counter + self._branched))
+            self._print_registers()
+
+    def _print_registers(self):
+        """
+        Prints registers and memory contents
+
+        :return: (None)
+        """
+
+        print("\nRegister")
+        print(self._register)
+        print("\nComparison Register")
+        print(self._comparison_register)
+        print("\nMemory")
+        print(self._memory)
 
     def _execute_statement(self, statement):
         """
