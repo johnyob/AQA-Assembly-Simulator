@@ -1,92 +1,92 @@
 {
   "2" : [
-    {"Type": 20, "Error": "Expect r_d after LDR instruction."},
-    {"Type": 25, "Error": "Expect comma after r_d in LDR instruction."},
-    {"Type": 22, "Error": "Expect direct address after r_d in LDR instruction."}
+    {"Type": 20, "Error": "Expect r_d after LDR instruction"},
+    {"Type": 25, "Error": "Expect comma after r_d in LDR instruction"},
+    {"Type": 22, "Error": "Expect direct address after r_d in LDR instruction"}
   ],
   "3": [
-    {"Type": 20, "Error": "Expect r_d after STR instruction."},
-    {"Type": 25, "Error": "Expect comma after r_d in STR instruction."},
-    {"Type": 22, "Error": "Expect direct address after r_d in STR instruction."}
+    {"Type": 20, "Error": "Expect r_d after STR instruction"},
+    {"Type": 25, "Error": "Expect comma after r_d in STR instruction"},
+    {"Type": 22, "Error": "Expect direct address after r_d in STR instruction"}
   ],
   "4": [
-    {"Type": 20, "Error": "Expect r_d after ADD instruction."},
-    {"Type": 25, "Error": "Expect comma after r_d in ADD instruction."},
-    {"Type": 20, "Error": "Expect r_n after r_d in ADD instruction."},
-    {"Type": 25, "Error": "Expect comma after r_n in ADD instruction."},
-    {"Type": 23, "Error": "Expect operand after r_n in ADD instruction."}
+    {"Type": 20, "Error": "Expect r_d after ADD instruction"},
+    {"Type": 25, "Error": "Expect comma after r_d in ADD instruction"},
+    {"Type": 20, "Error": "Expect r_n after r_d in ADD instruction"},
+    {"Type": 25, "Error": "Expect comma after r_n in ADD instruction"},
+    {"Type": 23, "Error": "Expect operand after r_n in ADD instruction"}
   ],
   "5": [
-    {"Type": 20, "Error": "Expect r_d after SUB instruction."},
-    {"Type": 25, "Error": "Expect comma after r_d in SUB instruction."},
-    {"Type": 20, "Error": "Expect r_n after r_d in SUB instruction."},
-    {"Type": 25, "Error": "Expect comma after r_n in SUB instruction."},
-    {"Type": 23, "Error": "Expect operand after r_n in SUB instruction."}
+    {"Type": 20, "Error": "Expect r_d after SUB instruction"},
+    {"Type": 25, "Error": "Expect comma after r_d in SUB instruction"},
+    {"Type": 20, "Error": "Expect r_n after r_d in SUB instruction"},
+    {"Type": 25, "Error": "Expect comma after r_n in SUB instruction"},
+    {"Type": 23, "Error": "Expect operand after r_n in SUB instruction"}
   ],
   "6": [
-    {"Type": 20, "Error": "Expect r_d after MOV instruction."},
-    {"Type": 25, "Error": "Expect comma after r_d in MOV instruction."},
-    {"Type": 23, "Error": "Expect operand after r_d in MOV instruction."}
+    {"Type": 20, "Error": "Expect r_d after MOV instruction"},
+    {"Type": 25, "Error": "Expect comma after r_d in MOV instruction"},
+    {"Type": 23, "Error": "Expect operand after r_d in MOV instruction"}
   ],
   "7": [
-    {"Type": 20, "Error": "Expect r_d after CMP instruction."},
-    {"Type": 25, "Error": "Expect comma after r_d in CMP instruction."},
-    {"Type": 23, "Error": "Expect operand after r_d in CMP instruction."}
+    {"Type": 20, "Error": "Expect r_d after CMP instruction"},
+    {"Type": 25, "Error": "Expect comma after r_d in CMP instruction"},
+    {"Type": 23, "Error": "Expect operand after r_d in CMP instruction"}
   ],
   "8": [
-    {"Type": 1, "Error": "Expect label after B instruction."}
+    {"Type": 1, "Error": "Expect label after B instruction"}
   ],
   "9": [
-    {"Type": 1, "Error": "Expect label after BEQ instruction."}
+    {"Type": 1, "Error": "Expect label after BEQ instruction"}
   ],
   "10": [
-    {"Type": 1, "Error": "Expect label after BNE instruction."}
+    {"Type": 1, "Error": "Expect label after BNE instruction"}
   ],
   "11": [
-    {"Type": 1, "Error": "Expect label after BGT instruction."}
+    {"Type": 1, "Error": "Expect label after BGT instruction"}
   ],
   "12": [
-    {"Type": 1, "Error": "Expect label after BLT instruction."}
+    {"Type": 1, "Error": "Expect label after BLT instruction"}
   ],
   "13": [
-    {"Type": 20, "Error": "Expect r_d after AND instruction."},
-    {"Type": 25, "Error": "Expect comma after r_d in AND instruction."},
-    {"Type": 20, "Error": "Expect r_n after r_d in AND instruction."},
-    {"Type": 25, "Error": "Expect comma after r_n in AND instruction."},
-    {"Type": 23, "Error": "Expect operand after r_n in AND instruction."}
+    {"Type": 20, "Error": "Expect r_d after AND instruction"},
+    {"Type": 25, "Error": "Expect comma after r_d in AND instruction"},
+    {"Type": 20, "Error": "Expect r_n after r_d in AND instruction"},
+    {"Type": 25, "Error": "Expect comma after r_n in AND instruction"},
+    {"Type": 23, "Error": "Expect operand after r_n in AND instruction"}
   ],
   "14": [
-    {"Type": 20, "Error": "Expect r_d after ORR instruction."},
-    {"Type": 25, "Error": "Expect comma after r_d in ORR instruction."},
-    {"Type": 20, "Error": "Expect r_n after r_d in ORR instruction."},
-    {"Type": 25, "Error": "Expect comma after r_n in ORR instruction."},
-    {"Type": 23, "Error": "Expect operand after r_n in ORR instruction."}
+    {"Type": 20, "Error": "Expect r_d after ORR instruction"},
+    {"Type": 25, "Error": "Expect comma after r_d in ORR instruction"},
+    {"Type": 20, "Error": "Expect r_n after r_d in ORR instruction"},
+    {"Type": 25, "Error": "Expect comma after r_n in ORR instruction"},
+    {"Type": 23, "Error": "Expect operand after r_n in ORR instruction"}
   ],
   "15": [
-    {"Type": 20, "Error": "Expect r_d after EOR instruction."},
-    {"Type": 25, "Error": "Expect comma after r_d in EOR instruction."},
-    {"Type": 20, "Error": "Expect r_n after r_d in EOR instruction."},
-    {"Type": 25, "Error": "Expect comma after r_n in EOR instruction."},
-    {"Type": 23, "Error": "Expect operand after r_n in EOR instruction."}
+    {"Type": 20, "Error": "Expect r_d after EOR instruction"},
+    {"Type": 25, "Error": "Expect comma after r_d in EOR instruction"},
+    {"Type": 20, "Error": "Expect r_n after r_d in EOR instruction"},
+    {"Type": 25, "Error": "Expect comma after r_n in EOR instruction"},
+    {"Type": 23, "Error": "Expect operand after r_n in EOR instruction"}
   ],
   "16": [
-    {"Type": 20, "Error": "Expect r_d after MVN instruction."},
-    {"Type": 25, "Error": "Expect comma after r_d in MVN instruction."},
-    {"Type": 23, "Error": "Expect operand after r_d in MVN instruction."}
+    {"Type": 20, "Error": "Expect r_d after MVN instruction"},
+    {"Type": 25, "Error": "Expect comma after r_d in MVN instruction"},
+    {"Type": 23, "Error": "Expect operand after r_d in MVN instruction"}
   ],
   "17": [
-    {"Type": 20, "Error": "Expect r_d after LSL instruction."},
-    {"Type": 25, "Error": "Expect comma after r_d in LSL instruction."},
-    {"Type": 20, "Error": "Expect r_n after r_d in LSL instruction."},
-    {"Type": 25, "Error": "Expect comma after r_n in LSL instruction."},
-    {"Type": 23, "Error": "Expect operand after r_n in LSL instruction."}
+    {"Type": 20, "Error": "Expect r_d after LSL instruction"},
+    {"Type": 25, "Error": "Expect comma after r_d in LSL instruction"},
+    {"Type": 20, "Error": "Expect r_n after r_d in LSL instruction"},
+    {"Type": 25, "Error": "Expect comma after r_n in LSL instruction"},
+    {"Type": 23, "Error": "Expect operand after r_n in LSL instruction"}
   ],
   "18": [
-    {"Type": 20, "Error": "Expect r_d after LSR instruction."},
-    {"Type": 25, "Error": "Expect comma after r_d in LSR instruction."},
-    {"Type": 20, "Error": "Expect r_n after r_d in LSR instruction."},
-    {"Type": 25, "Error": "Expect comma after r_n in LSR instruction."},
-    {"Type": 23, "Error": "Expect operand after r_n in LSR instruction."}
+    {"Type": 20, "Error": "Expect r_d after LSR instruction"},
+    {"Type": 25, "Error": "Expect comma after r_d in LSR instruction"},
+    {"Type": 20, "Error": "Expect r_n after r_d in LSR instruction"},
+    {"Type": 25, "Error": "Expect comma after r_n in LSR instruction"},
+    {"Type": 23, "Error": "Expect operand after r_n in LSR instruction"}
   ],
   "19": []
 }
