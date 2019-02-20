@@ -194,7 +194,7 @@ Note: *10* is stored in memory address *0* initially.
 - *rd* - Use the value stored in register **d**, e.g. **r4** means use the value stored in register **4**.
 
 ## Errors
-If you discover an error within this package, please email [me](mailto:alistair.o'brien@ellesmere.com).
+If you discover an error within this package, please email [me](mailto:alistair@duneroot.co.uk).
 
 ## Credits
 - [Alistair O'Brien](https://github.com/johnyob)
